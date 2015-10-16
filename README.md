@@ -12,4 +12,10 @@ Debian / Ubuntu Images
 - **debuild/trusty** - Ubuntu 14.04 Trusty Tahr (LTS)
 - **debuild/vivid** - Ubunut 15.04 Vivid Vervet
 
-More to come!
+
+CentOS Images
+-------------
+
+- **rpmbuild/centos5** - CentOS 5
+- **rpmbuild/centos6** - CentOS 6
+- **rpmbuild/centos7** - CentOS 7
