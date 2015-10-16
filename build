@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for DIST in precise trusty vivid; do
+  docker build -t debuild/${DIST} debuild/${DIST}
+done

@@ -1,4 +1,4 @@
-FROM ubuntu:12.04
+FROM ubuntu:15.04
 MAINTAINER James Hunt <docker@jameshunt.us>
 
 RUN apt-get update && \
@@ -11,5 +11,5 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-ENV DIST=precise
+ENV DIST=vivid
 CMD /srv/build
