@@ -1,9 +1,12 @@
 #!/bin/bash
 
+TAG=$(date +%Y%m%d)
+
 for DIST in precise trusty vivid; do
-  docker build -t debuild/${DIST} debuild/${DIST}
+  docker build -t debuild/${DIST}:${TAG} debuild/${DIST}
 done
+exit 0
 
 for DIST in centos{5,6,7}; do
-  docker build -t rpmbuild/${DIST} rpmbuild/${DIST}
+  docker build -t rpmbuild/${DIST}:${TAG} rpmbuild/${DIST}
 done
