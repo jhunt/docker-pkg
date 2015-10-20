@@ -6,7 +6,7 @@ RUN apt-get update && \
                        debhelper \
                        devscripts \
                        equivs \
-                       libtool \
+                       libtool libtool-bin \
                        git && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
