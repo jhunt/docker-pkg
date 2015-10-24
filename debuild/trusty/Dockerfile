@@ -18,5 +18,5 @@ RUN useradd builder -m -G staff,sudo && \
     chown builder /home/builder/debuild
 USER builder
 
-ENV DIST=trusty
+ENV FLAVOR=debuild DIST=trusty
 CMD /srv/build

@@ -18,5 +18,5 @@ RUN useradd builder -m -G staff,sudo && \
     chown builder /home/builder/debuild
 USER builder
 
-ENV DIST=vivid
+ENV FLAVOR=debuild DIST=vivid
 CMD /srv/build
