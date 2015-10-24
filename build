@@ -6,7 +6,6 @@ for DIST in precise trusty vivid; do
   docker build -t debuild/${DIST}:${TAG} debuild/${DIST}
   docker tag -f debuild/${DIST}:${TAG} debuild/${DIST}:latest
 done
-exit 0
 
 for DIST in centos{5,6,7}; do
   docker build -t rpmbuild/${DIST}:${TAG} rpmbuild/${DIST}
