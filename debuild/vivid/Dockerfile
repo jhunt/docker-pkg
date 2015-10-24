@@ -7,9 +7,14 @@ RUN apt-get update && \
                        devscripts \
                        equivs \
                        libtool libtool-bin \
+                       sudo \
                        git && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+RUN useradd builder -m -G staff,sudo && \
+    echo "builder ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers
+USER builder
 
 ENV DIST=vivid
 CMD /srv/build
