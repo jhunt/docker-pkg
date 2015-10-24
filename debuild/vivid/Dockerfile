@@ -13,7 +13,9 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 RUN useradd builder -m -G staff,sudo && \
-    echo "builder ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers
+    echo "builder ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers && \
+    mkdir -p /home/builder/debuild && \
+    chown builder /home/builder/debuild
 USER builder
 
 ENV DIST=vivid
