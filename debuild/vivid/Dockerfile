@@ -3,6 +3,7 @@ MAINTAINER James Hunt <docker@jameshunt.us>
 
 RUN apt-get update && \
     apt-get install -y autoconf \
+                       pkg-config \
                        debhelper \
                        devscripts \
                        equivs \

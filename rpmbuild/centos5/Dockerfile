@@ -10,6 +10,7 @@ RUN yum install -y curl && \
                    libtool libtool-ltdl \
                    make cmake \
                    git \
+                   pkgconfig \
                    sudo \
                    automake autoconf \
                    yum-utils rpm-build && \

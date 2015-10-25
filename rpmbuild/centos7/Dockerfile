@@ -5,6 +5,7 @@ RUN yum install -y gcc gcc-c++ \
                    libtool libtool-ltdl \
                    make cmake \
                    git \
+                   pkgconfig \
                    sudo \
                    automake autoconf \
                    yum-utils rpm-build && \

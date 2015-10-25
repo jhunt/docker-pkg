@@ -6,6 +6,7 @@ RUN yum install -y gcc gcc-c++ \
                    make cmake \
                    tar \
                    git \
+                   pkgconfig \
                    sudo \
                    automake autoconf \
                    yum-utils rpm-build && \
