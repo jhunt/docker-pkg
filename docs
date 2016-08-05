@@ -1,0 +1,27 @@
+#!/bin/bash
+
+ROOT=$1
+if [[ -z $ROOT ]]; then
+  echo >&2 "USAGE: $0 path/to/image/dir"
+  exit 1
+fi
+
+if [[ ! -d $ROOT ]]; then
+  echo >&2 "$ROOT: Not found"
+  exit 1
+fi
+
+if [[ ! -f $ROOT/README.md ]]; then
+  echo >&2 "$ROOT: No README.md found"
+  exit 1
+fi
+
+if [[ ! -f $ROOT/Dockerfile ]]; then
+  echo >&2 "$ROOT: No Dockerfile found"
+  exit 1
+fi
+
+(
+  sed -e '/<DOCKERFILE>/d' $ROOT/README.md
+  sed -e '/^MAINTAINER /d;s/^/    /' $ROOT/Dockerfile
+)
