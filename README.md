@@ -19,3 +19,8 @@ CentOS Images
 - **rpmbuild/centos5** - CentOS 5
 - **rpmbuild/centos6** - CentOS 6
 - **rpmbuild/centos7** - CentOS 7
+
+Building the Images
+===================
+
+    ./build && ./push latest [other tags ...]
