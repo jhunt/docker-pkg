@@ -19,5 +19,5 @@ RUN useradd builder -m -G staff,sudo && \
     chown builder /home/builder/debuild
 USER builder
 
-ENV FLAVOR=debuild DIST=precise
-CMD /srv/build
+ENV FLAVOR=debuild OS=ubuntu DIST=precise
+CMD /srv/pkg
