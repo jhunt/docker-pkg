@@ -28,6 +28,7 @@ Environment Variables
 Build scripts can make use of the following environment variables:
 
 - **FLAVOR** - will be set to `debuild`
+- **OS** - will be set to `ubuntu`
 - **DIST** - will be set to `vivid`
 
 Hook / Integration
@@ -40,4 +41,25 @@ Dockerfile
 
 Here is the Dockerfile used to build this image:
 
-<DOCKERFILE>
+    FROM ubuntu:15.04
+
+    RUN apt-get update && \
+        apt-get install -y autoconf \
+                           pkg-config \
+                           debhelper \
+                           devscripts \
+                           equivs \
+                           libtool libtool-bin \
+                           sudo \
+                           git && \
+        apt-get clean && \
+        rm -rf /var/lib/apt/lists/*
+
+    RUN useradd builder -m -G staff,sudo && \
+        echo "builder ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers && \
+        mkdir -p /home/builder/debuild && \
+        chown builder /home/builder/debuild
+    USER builder
+
+    ENV FLAVOR=debuild OS=ubuntu DIST=vivid
+    CMD /srv/pkg

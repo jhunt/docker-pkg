@@ -1,27 +1,28 @@
 #!/bin/bash
+set -eu
 
-ROOT=$1
-if [[ -z $ROOT ]]; then
-  echo >&2 "USAGE: $0 path/to/image/dir"
+ROOT=${1:-}
+if [[ -z ${ROOT} ]]; then
+  find . -name 'Dockerfile' | sed -e 's,/Dockerfile,,' | xargs -n1 $0
+  exit $?
+fi
+
+if [[ ! -d ${ROOT} ]]; then
+  echo >&2 "${ROOT}: Not found"
   exit 1
 fi
 
-if [[ ! -d $ROOT ]]; then
-  echo >&2 "$ROOT: Not found"
+if [[ ! -f ${ROOT}/README ]]; then
+  echo >&2 "${ROOT}: No README found"
   exit 1
 fi
 
-if [[ ! -f $ROOT/README.md ]]; then
-  echo >&2 "$ROOT: No README.md found"
-  exit 1
-fi
-
-if [[ ! -f $ROOT/Dockerfile ]]; then
-  echo >&2 "$ROOT: No Dockerfile found"
+if [[ ! -f ${ROOT}/Dockerfile ]]; then
+  echo >&2 "${ROOT}: No Dockerfile found"
   exit 1
 fi
 
 (
-  sed -e '/<DOCKERFILE>/d' $ROOT/README.md
-  sed -e '/^MAINTAINER /d;s/^/    /' $ROOT/Dockerfile
-)
+  sed -e '/<DOCKERFILE>/d'                      ${ROOT}/README
+  sed -e '/^MAINTAINER /d;s/^/    /;s/^    $//' ${ROOT}/Dockerfile
+) > ${ROOT}/README.md

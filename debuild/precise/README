@@ -1,4 +1,4 @@
-Ubuntu Trusty Tahr (14.04 LTS)
+Ubuntu Precise Pangolin (12.04 LTS)
 ===================================
 
 This docker image can be used to build Debian/Ubuntu packages.
@@ -29,7 +29,7 @@ Build scripts can make use of the following environment variables:
 
 - **FLAVOR** - will be set to `debuild`
 - **OS** - will be set to `ubuntu`
-- **DIST** - will be set to `trusty`
+- **DIST** - will be set to `precise`
 
 Hook / Integration
 ------------------
@@ -41,25 +41,4 @@ Dockerfile
 
 Here is the Dockerfile used to build this image:
 
-    FROM ubuntu:14.04
-
-    RUN apt-get update && \
-        apt-get install -y autoconf \
-                           pkg-config \
-                           debhelper \
-                           devscripts \
-                           equivs \
-                           libtool \
-                           sudo \
-                           git && \
-        apt-get clean && \
-        rm -rf /var/lib/apt/lists/*
-
-    RUN useradd builder -m -G staff,sudo && \
-        echo "builder ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers && \
-        mkdir -p /home/builder/debuild && \
-        chown builder /home/builder/debuild
-    USER builder
-
-    ENV FLAVOR=debuild OS=ubuntu DIST=trusty
-    CMD /srv/pkg
+<DOCKERFILE>
