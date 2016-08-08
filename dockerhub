@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for x in $(find . -name 'README'); do
+	pbcopy <$x.md
+	echo -n "$x "
+	read JUNK
+done
