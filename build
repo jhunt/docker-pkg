@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -e
 TAG=$(date +%Y%m%d)
 
 for DIST in precise trusty vivid; do
